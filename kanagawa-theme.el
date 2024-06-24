@@ -4,6 +4,7 @@
 ;; Copyright (C) 2023-2024 Shira Filianore <meritamen@sdf.org>
 
 ;; Author: Shira Filianore <meritamen@sdf.org>
+;; Maintainer: Fabio Kleis <fabiohkrc@gmail.com>
 ;; URL: https://github.com/Fabiokleis/emacs-kanagawa-theme
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24.3"))
