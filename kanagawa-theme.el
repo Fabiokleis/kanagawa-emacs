@@ -85,11 +85,10 @@
 
 (deftheme kanagawa "An elegant theme inspired by The Great Wave off Kanagawa by Katsushika Hokusa.")
 
-(eval-when-compile  
+(eval-when-compile
   (defun kanagawa-theme-true-color-p ()
     (or (display-graphic-p)
 	(= (tty-display-color-cells) 16777216)))
-  
   (defvar kanagawa-theme-dark-palette
     `((fuji-white      ,(if (kanagawa-theme-true-color-p) "#DCD7BA" "#ffffff"))
       (old-white       ,(if (kanagawa-theme-true-color-p) "#C8C093" "#ffffff"))
@@ -121,21 +120,26 @@
       (spring-blue     ,(if (kanagawa-theme-true-color-p) "#7FB4CA" "#717C7C"))
       (light-blue      ,(if (kanagawa-theme-true-color-p) "#A3D4D5" "#717C7C"))
       (spring-green    ,(if (kanagawa-theme-true-color-p) "#98BB6C" "#717C7C"))
-      (boat-yellow-1   ,(if (kanagawa-theme-true-color-p) "#938056" "#717C7C"))
+      (_boat-yellow-1   ,(if (kanagawa-theme-true-color-p) "#938056" "#717C7C"))
       (boat-yellow-2   ,(if (kanagawa-theme-true-color-p) "#C0A36E" "#717C7C"))
       (carp-yellow     ,(if (kanagawa-theme-true-color-p) "#E6C384" "#717C7C"))
       (sakura-pink     ,(if (kanagawa-theme-true-color-p) "#D27E99" "#717C7C"))
       (wave-red        ,(if (kanagawa-theme-true-color-p) "#E46876" "#717C7C"))
       (peach-red       ,(if (kanagawa-theme-true-color-p) "#FF5D62" "#717C7C"))
       (surimi-orange   ,(if (kanagawa-theme-true-color-p) "#FFA066" "#717C7C"))
-      (katana-gray     ,(if (kanagawa-theme-true-color-p) "#717C7C" "#717C7C"))
+      (_katana-gray     ,(if (kanagawa-theme-true-color-p) "#717C7C" "#717C7C"))
       (comet           ,(if (kanagawa-theme-true-color-p) "#54536D" "#4e4e4e")))
     "Default palette for Kanagawa dark theme."))
 
 (defmacro kanagawa-theme-define-dark-theme (theme &rest faces)
-  `(let* ((class '((class color) (min-colors 89)))
-          ,@(append kanagawa-theme-dark-palette kanagawa-theme-custom-colors))    
-     (custom-theme-set-faces ,theme ,@faces)))
+  "Overwrite dark palette of THEME and load FACES."
+  (if (boundp 'kanagawa-theme-custom-colors)
+      `(let* ((class '((class color) (min-colors 89)))
+	  ,@(append kanagawa-theme-dark-palette kanagawa-theme-custom-colors))
+	 (custom-theme-set-faces,theme ,@faces))
+    `(let* ((class '((class color) (min-colors 89)))
+	    ,@(append kanagawa-theme-dark-palette))
+       (custom-theme-set-faces,theme ,@faces))))
 
 (kanagawa-theme-define-dark-theme
  'kanagawa
@@ -580,6 +584,7 @@
  `(focus-unfocused                               ((,class (:foreground ,sumi-ink-4)))))
 
 ;;;###autoload
+
 (and load-file-name
      (boundp 'custom-theme-load-path)
      (add-to-list 'custom-theme-load-path
