@@ -6,8 +6,13 @@ In order to have kanagawa-theme just clone this repository in `~/.emacs.d/themes
 git clone git@github.com:Fabiokleis/emacs-kanagawa-theme.git ~/.emacs.d/themes
 ```
 
-Add this to `~/.emacs.d/init.el`
+## Customize colors
+You can overwrite default palette colors by setting custom variable `kanagawa-theme-custom-colors` like this:
 ```elisp
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'kanagawa t)
+(use-package kanagawa-theme
+  :load-path "~/.emacs.d/themes"
+  :preface
+  (setq kanagawa-theme-custom-colors '((sumi-ink-1b "#0A0E14")))
+  :config
+  (load-theme 'kanagawa t))
 ```
