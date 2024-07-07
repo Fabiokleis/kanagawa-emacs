@@ -1,4 +1,4 @@
-# emacs-kanagawa-theme
+# kanagawa-theme
 
 kanagawa-theme.el --- An elegant theme inspired by The Great Wave off Kanagawa
 
