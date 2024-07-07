@@ -2,6 +2,11 @@
 
 kanagawa-theme.el --- An elegant theme inspired by The Great Wave off Kanagawa
 
+Kanagawa is a theme inspired by the colors of the famous painting
+The Great Wave off Kanagawa by Katsushika Hokusa.
+
+Original theme created by rebelot see: https://github.com/rebelot/kanagawa.nvim
+
 Copyright (C) 2023 Mikael Konradsson
 
 Copyright (C) 2023-2024 Shira Filianore <meritamen@sdf.org>
@@ -10,12 +15,9 @@ Author: Shira Filianore <meritamen@sdf.org>
 
 Maintainer: Fabio Kleis <fabiohkrc@gmail.com>
 
-Kanagawa is a theme inspired by the colors of the famous painting
-The Great Wave off Kanagawa by Katsushika Hokusa.
-Original theme created by rebelot see: https://github.com/rebelot/kanagawa.nvim
 
 ## Installation
-kanagawa-theme are available on melpa. To install add this to your emacs config file:
+`kanagawa-theme` are available on melpa. To install it add this to your emacs config file:
 ```elisp
 (use-package kanagawa-theme
   :ensure t
