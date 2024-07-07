@@ -1,4 +1,4 @@
-;;; kanagawa-theme.el --- An elegant theme inspired by The Great Wave off Kanagawa by Katsushika Hokusa. From new github source -*- lexical-binding: t -*-
+;;; kanagawa-theme.el --- An elegant theme inspired by The Great Wave off Kanagawa -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Mikael Konradsson
 ;; Copyright (C) 2023-2024 Shira Filianore <meritamen@sdf.org>
