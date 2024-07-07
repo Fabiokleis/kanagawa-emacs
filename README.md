@@ -3,6 +3,7 @@
 kanagawa-theme.el --- An elegant theme inspired by The Great Wave off Kanagawa
 
 Copyright (C) 2023 Mikael Konradsson
+
 Copyright (C) 2023-2024 Shira Filianore <meritamen@sdf.org>
 
 Author: Shira Filianore <meritamen@sdf.org>
