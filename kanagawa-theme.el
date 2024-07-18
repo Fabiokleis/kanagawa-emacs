@@ -592,4 +592,9 @@
                    (file-name-directory load-file-name))))
 
 (provide-theme 'kanagawa)
+
+;; Local Variables:
+;; no-byte-compile: t
+;; End:
+
 ;;; kanagawa-theme.el ends here
