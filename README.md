@@ -35,5 +35,4 @@ You can overwrite default palette colors by setting custom variable `kanagawa-th
   :config
   (load-theme 'kanagawa t))
 ```
-`use-package` should download `kanagawa-theme`, in order to apply new colors you must recompile `kanagawa-theme`
-by running `package-recompile` and reopen emacs.
+
