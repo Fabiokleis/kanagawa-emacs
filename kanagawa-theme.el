@@ -86,8 +86,8 @@
 (deftheme kanagawa "An elegant theme inspired by The Great Wave off Kanagawa by Katsushika Hokusa.")
 
 (defvar kanagawa-theme-true-color-p
-  "When non-nil use true color values in color palette."
-  (or (display-graphic-p) (= (tty-display-color-cells) 16777216)))
+  (or (display-graphic-p) (= (tty-display-color-cells) 16777216))
+  "When non-nil use true color values in color palette.")
 
 (defvar kanagawa-theme-dark-palette
   `((fuji-white      ,(if kanagawa-theme-true-color-p "#DCD7BA" "#ffffff"))
