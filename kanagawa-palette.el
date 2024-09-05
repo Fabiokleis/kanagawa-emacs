@@ -47,7 +47,7 @@
     ;; Diag
     (samurai-red "#E82424")
     (ronin-yellow "#FF9E3B")
-    (wave-aqua1 "#6A9589")
+    (wave-aqua-1 "#6A9589")
     (dragon-blue "#658594")
 
     ;; Fg and Comments
@@ -56,17 +56,17 @@
     (fuji-gray "#727169")
 
     (oni-violet "#957FB8")
-    (oni-violet2 "#b8b4d0")
+    (oni-violet-2 "#b8b4d0")
     (crystal-blue "#7E9CD8")
     (spring-violet-1 "#938AA9")
     (spring-violet-2 "#9CABCA")
     (spring-blue "#7FB4CA")
     (light-blue "#A3D4D5")
-    (wave-aqua2 "#7AA89F") ;; improve lightness: desaturated greenish Aqua
+    (wave-aqua-2 "#7AA89F") ;; improve lightness: desaturated greenish Aqua
 
     (spring-green "#98BB6C")
-    (boat-yellow1 "#938056")
-    (boat-yellow2 "#C0A36E")
+    (boat-yellow-1 "#938056")
+    (boat-yellow-2 "#C0A36E")
     (carp-yellow "#E6C384")
 
     (sakura-pink "#D27E99")

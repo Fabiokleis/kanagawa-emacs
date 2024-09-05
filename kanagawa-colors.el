@@ -93,7 +93,7 @@
    (diag-error ,samurai-red)
    (diag-warning ,ronin-yellow)
    (diag-info ,dragon-blue)
-   (diag-hint ,wave-aqua1)
+   (diag-hint ,wave-aqua-1)
 
    (black ,sumi-ink-0)
    (red ,autumn-red)
@@ -182,7 +182,7 @@
    (diag-error ,samurai-red)
    (diag-warning ,ronin-yellow)
    (diag-info ,dragon-blue)
-   (diag-hint ,wave-aqua1)
+   (diag-hint ,wave-aqua-1)
 
    (black ,dragon-black-0)
    (red ,dragon-red)
@@ -198,7 +198,7 @@
    (bright-yellow ,carp-yellow)
    (bright-blue ,spring-blue)
    (bright-magenta ,spring-violet-1)
-   (brignt-cyan ,wave-aqua2)
+   (brignt-cyan ,wave-aqua-2)
    (bright-white ,dragon-white)
    (extend-color-1 ,dragon-orange)
    (extend-color-2 ,dragon-orange-2)))
