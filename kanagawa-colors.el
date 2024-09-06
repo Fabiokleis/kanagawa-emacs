@@ -4,6 +4,7 @@
 ;; Copyright (C) 2023-2024 Meritamen <meritamen@sdf.org>
 
 ;; Author: Meritamen <meritamen@sdf.org>
+;; Maintainer: Fabio Kleis <fabiohkrc@gmail.com>
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -31,8 +32,8 @@
    (fg-dim ,old-white)
    (fg-reverse ,wave-blue-1)
 
-   (bg-dim ,sumi-ink-0)
-   (bg-gutter ,sumi-ink-1)
+   (bg-dim ,sumi-ink-1)
+   (bg-gutter ,sumi-ink-4)
 
    (bg-m3 ,sumi-ink-0)
    (bg-m2 ,sumi-ink-1)
@@ -45,8 +46,8 @@
    (nontext ,sumi-ink-6)
    (whitespace ,sumi-ink-6)
 
-   (bg-visual ,wave-blue-2)
-   (bg-search ,wave-blue-1)
+   (bg-visual ,wave-blue-1)
+   (bg-search ,wave-blue-2)
 
    (pmenu-fg ,fuji-white)
    (pmenu-fg-sel nil)
@@ -71,7 +72,7 @@
    (syn-keyword ,oni-violet)
    (syn-operator ,boat-yellow-2)
    (syn-perproc ,wave-red)
-   (syn-perproc ,wave-aqua-2)
+   (syn-type ,wave-aqua-2)
    (syn-regex ,boat-yellow-2)
    (syn-deprecated ,katana-gray)
    (syn-comment ,fuji-gray)
@@ -120,11 +121,11 @@
    (fg-dim ,old-white)
    (fg-reverse ,wave-blue-1)
 
-   (bg-dim ,sumi-ink-0)
-   (bg-gutter ,sumi-ink-1)
+   (bg-dim ,dragon-black-1)
+   (bg-gutter ,dragon-black-4)
 
-   (bg-m3 ,dragon-black-1)
-   (bg-m2 ,dragon-black-4)
+   (bg-m3 ,dragon-black-0)
+   (bg-m2 ,dragon-black-1)
    (bg-m1 ,dragon-black-2)
    (bg ,dragon-black-3)
    (bg-p1 ,dragon-black-4)
@@ -160,7 +161,7 @@
    (syn-keyword ,dragon-violet)
    (syn-operator ,dragon-red)
    (syn-perproc ,dragon-red)
-   (syn-perproc ,dragon-aqua)
+   (syn-type ,dragon-aqua)
    (syn-regex ,dragon-red)
    (syn-deprecated ,katana-gray)
    (syn-comment ,dragon-ash)
