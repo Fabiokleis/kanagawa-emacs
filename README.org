@@ -51,31 +51,31 @@ Or use =use-package= macro:
 
 *** Custom colors
 If you'd like to tweak the theme by changing just a few colors, you can
-do so by defining new values in the =kanagawa-theme-custom-colors=
+do so by defining new values in the =kanagawas-theme-custom-colors=
 variable before loading the theme.
 
 For example, to customize just the lighter background colors, you could add
 to your init file:
 
 #+BEGIN_SRC emacs-lisp
-(setq kanagawa-theme-custom-colors '((bg "#0A0E14")))
+(setq kanagawa-themes-custom-colors '((bg "#0A0E14")))
 (load-theme 'kanagawa-wave t)
 #+END_SRC
 
 *** Options
-- =kanagawa-theme-comment-italic=:
+- =kanagawa-themes-comment-italic=:
 This toggles italics for comments and will also add a lighter color to it.
-- =kanagawa-theme-keyword-italic=:
+- =kanagawa-themes-keyword-italic=:
 This toggles italics for keywords.
-- =kanagawa-theme-org-agenda-height=:
+- =kanagawa-themes-org-agenda-height=:
 This toggles the use of varying org agenda heights.
-- =kanagawa-theme-org-bold=:
+- =kanagawa-themes-org-bold=:
 This toggles bold text for org headings.
-- =kanagawa-theme-org-height=:
+- =kanagawa-themes-org-height=:
 This toggles the use of varying org headings heights.
-- =kanagawa-theme-org-highlight=:
+- =kanagawa-themes-org-highlight=:
 This toggles highlighting of org headings.
-- =kanagawa-theme-org-priority-bold=:
+- =kanagawa-themes-org-priority-bold=:
 This toggles bold text for priority items in agenda view.
 ** FAQ
 
