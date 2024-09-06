@@ -23,13 +23,17 @@
 
 ;;; Code:
 
-(defmacro kanagawa-theme--define-variant-colors (variant &rest body)
-  `(defvar ,(intern (format "kanagawa-theme-%s-colors" (symbol-name variant)))
-     (let ,kanagawa-color-palette-alist ,@body)))
+(defun kanagawa-themes--variant-colors-symbol (variant)
+  (intern (format "kanagawa-themes-%s-colors" (symbol-name variant))))
 
-(defmacro kanagawa-theme--variant-with-colors (variant &rest body)
-  (let ((colors (intern (format "kanagawa-theme-%s-colors" (symbol-name variant)))))
-    `(let ,(symbol-value colors) ,@body)))
+(defmacro kanagawa-themes--define-variant-colors (variant &rest body)
+  `(defvar ,(kanagawa-themes--variant-colors-symbol variant)
+     (let ,kanagawa-themes-color-palette-list ,@body)))
+
+(defmacro kanagawa-themes--variant-with-colors (variant &rest body)
+  `(let ,(append (symbol-value (kanagawa-themes--variant-colors-symbol variant))
+                 kanagawa-themes-custom-colors)
+     ,@body))
 
 (provide 'kanagawa-lib)
 

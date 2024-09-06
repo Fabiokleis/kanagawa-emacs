@@ -26,7 +26,7 @@
 (require 'kanagawa-lib)
 (require 'kanagawa-palette)
 
-(kanagawa-theme--define-variant-colors
+(kanagawa-themes--define-variant-colors
  wave
  `((fg ,fuji-white)
    (fg-dim ,old-white)
@@ -115,7 +115,7 @@
    (extend-color-1 ,surimi-orange)
    (extend-color-2 ,peach-red)))
 
-(kanagawa-theme--define-variant-colors
+(kanagawa-themes--define-variant-colors
  dragon
  `((fg ,dragon-white)
    (fg-dim ,old-white)
@@ -204,7 +204,7 @@
    (extend-color-1 ,dragon-orange)
    (extend-color-2 ,dragon-orange-2)))
 
-(kanagawa-theme--define-variant-colors
+(kanagawa-themes--define-variant-colors
  lotus
  `((fg ,lotus-ink-1)
    (fg-dim ,lotus-ink-2)

@@ -25,7 +25,7 @@
 
 (require 'kanagawa-colors)
 
-(kanagawa-theme--define-theme wave)
+(kanagawa-themes--define-theme wave)
 
 ;; Local Variables
 ;; no-byte-compile: t

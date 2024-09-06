@@ -23,7 +23,7 @@
 
 ;;; Code:
 
-(defvar kanagawa-color-palette-alist
+(defvar kanagawa-themes-color-palette-list
   '((sumi-ink-0 "#16161D")
     (sumi-ink-1 "#181820")
     (sumi-ink-2 "#1a1a22")
@@ -141,7 +141,7 @@
     (lotus-teal-2 "#6693bf")
     (lotus-teal-3 "#5a7785")
     (lotus-cyan "#d7e3d8"))
-  "The kanagawa color palette alist.")
+  "The kanagawa color palette list.")
 
 (provide 'kanagawa-palette)
 

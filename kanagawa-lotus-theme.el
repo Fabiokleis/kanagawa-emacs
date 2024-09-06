@@ -25,7 +25,7 @@
 
 (require 'kanagawa-colors)
 
-(kanagawa-theme--define-theme lotus)
+(kanagawa-themes--define-theme lotus)
 
 ;; Local Variables
 ;; no-byte-compile: t

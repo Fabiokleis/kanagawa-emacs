@@ -25,7 +25,7 @@
 
 (require 'kanagawa-colors)
 
-(kanagawa-theme--define-theme dragon)
+(kanagawa-themes--define-theme dragon)
 
 ;; Local Variables
 ;; no-byte-compile: t

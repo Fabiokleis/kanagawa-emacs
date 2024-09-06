@@ -35,45 +35,45 @@
 (require 'kanagawa-palette)
 (require 'kanagawa-colors)
 
-(defgroup kanagawa-theme nil
+(defgroup kanagawa-themes nil
   "Kanagawa-theme options."
   :group 'faces)
 
-(defcustom kanagawa-theme-comment-italic t
+(defcustom kanagawa-themes-comment-italic t
   "Enable italics for comments and also disable background."
   :type 'boolean
-  :group 'kanagawa-theme)
+  :group 'kanagawa-themes)
 
-(defcustom kanagawa-theme-keyword-italic t
+(defcustom kanagawa-themes-keyword-italic t
   "Enable italics for keywords."
   :type 'boolean
-  :group 'kanagawa-theme)
+  :group 'kanagawa-themes)
 
-(defcustom kanagawa-theme-org-height t
+(defcustom kanagawa-themes-org-height t
   "Use varying text heights for org headings."
   :type 'boolean
-  :group 'kanagawa-theme)
+  :group 'kanagawa-themes)
 
-(defcustom kanagawa-theme-org-bold t
+(defcustom kanagawa-themes-org-bold t
   "Inherit text bold for org headings."
   :type 'boolean
-  :group 'kanagawa-theme)
+  :group 'kanagawa-themes)
 
-(defcustom kanagawa-theme-org-priority-bold t
+(defcustom kanagawa-themes-org-priority-bold t
   "Inherit text bold for priority items in agenda view."
   :type 'boolean
-  :group 'kanagawa-theme)
+  :group 'kanagawa-themes)
 
-(defcustom kanagawa-theme-org-highlight nil
+(defcustom kanagawa-themes-org-highlight nil
   "Highlight org headings."
   :type 'boolean
-  :group 'kanagawa-theme)
+  :group 'kanagawa-themes)
 
 ;;;###autoload
-(defcustom kanagawa-theme-custom-colors '()
+(defcustom kanagawa-themes-custom-colors '()
   "Place to override default theme colors.")
 
-(defmacro kanagawa-theme--faces-spec ()
+(defmacro kanagawa-themes--faces-spec ()
   `(mapcar
     #'(lambda (f) (list (car f) `((t ,@(cdr f)))))
     `(
@@ -98,13 +98,13 @@
 ;;;;;;; font lock
       (font-lock-builtin-face (:foreground ,fg))
       (font-lock-comment-face (:foreground ,syn-comment
-                                           :slant ,(if kanagawa-theme-comment-italic 'italic 'normal)))
+                                           :slant ,(if kanagawa-themes-comment-italic 'italic 'normal)))
       (font-lock-comment-delimiter-face (:foreground ,syn-comment))
       (font-lock-constant-face (:foreground ,syn-constant))
       (font-lock-doc-face (:foreground ,syn-string))
       (font-lock-function-name-face (:foreground ,syn-fun))
       (font-lock-keyword-face (:foreground ,syn-keyword :weight bold
-                                           :slant ,(if kanagawa-theme-keyword-italic 'italic 'normal)))
+                                           :slant ,(if kanagawa-themes-keyword-italic 'italic 'normal)))
       (font-lock-negation-char-face (:inherit font-lock-keyword-face))
       (font-lock-preprocessor-face (:foreground ,syn-perproc))
       (font-lock-regexp-grouping-construct (:foreground ,syn-regex :weight bold))
@@ -193,19 +193,19 @@
       (org-date (:foreground ,bg-search))
       (org-ellipsis (:foreground ,bg-search :weight bold))
       (org-level-1 (:foreground ,extend-color-1
-                                :height ,(if kanagawa-theme-org-height 1.3 1.0)
-                                :weight ,(if kanagawa-theme-org-bold 'bold 'normal)))
+                                :height ,(if kanagawa-themes-org-height 1.3 1.0)
+                                :weight ,(if kanagawa-themes-org-bold 'bold 'normal)))
       (org-level-2 (:foreground ,syn-punct
-                                :height ,(if kanagawa-theme-org-height 1.2 1.0)
-                                :weight ,(if kanagawa-theme-org-bold 'bold 'normal)))
-      (org-level-3 (:foreground ,yellow :height ,(if kanagawa-theme-org-height 1.1 1.0)))
+                                :height ,(if kanagawa-themes-org-height 1.2 1.0)
+                                :weight ,(if kanagawa-themes-org-bold 'bold 'normal)))
+      (org-level-3 (:foreground ,yellow :height ,(if kanagawa-themes-org-height 1.1 1.0)))
       (org-level-4 (:foreground ,fg))
       (org-level-5 (:foreground ,fg))
       (org-level-6 (:foreground ,bright-yellow))
       (org-level-7 (:foreground ,extend-color-1))
       (org-level-8 (:foreground ,bright-green))
       (org-priority (:foreground ,extend-color-2
-                                 :weight ,(if kanagawa-theme-org-priority-bold 'bold 'normal)))
+                                 :weight ,(if kanagawa-themes-org-priority-bold 'bold 'normal)))
 ;;;;;; show-paren
       (show-paren-match (:foreground ,diag-warning :weight bold))
       (show-paren-match-expression (:inherit show-paren-match))
@@ -312,7 +312,7 @@
       (tree-sitter-hl-face:constructor (:foreground ,syn-special-1))
       (tree-sitter-hl-face:operator (:foreground ,syn-operator))
       (tree-sitter-hl-face:keyword (:foreground ,syn-keyword
-                                                :slant ,(if kanagawa-theme-keyword-italic 'italic 'normal)))
+                                                :slant ,(if kanagawa-themes-keyword-italic 'italic 'normal)))
       (tree-sitter-hl-face:punctuation (:foreground ,syn-punct))
       (tree-sitter-hl-face:punctuation.delimiter (:inherit tree-sitter-hl-face:punctuation))
       (tree-sitter-hl-face:punctuation.bracket (:inhert tree-sitter-hl-face:punctuation))
@@ -446,16 +446,16 @@
       (orderless-match-face-2 (:foreground ,blue))
       (orderless-match-face-3 (:foreground ,cyan)))))
 
-(defmacro kanagawa-theme--define-theme (variant)
+(defmacro kanagawa-themes--define-theme (variant)
   (let ((name (intern (format "kanagawa-%s" (symbol-name variant))))
         (doc (format "The Kanagawa %s theme" variant)))
     `(progn
        (deftheme ,name ,doc)
-       (kanagawa-theme--variant-with-colors
+       (kanagawa-themes--variant-with-colors
         ,variant
         (apply 'custom-theme-set-faces
                ',name
-               (append (kanagawa-theme--faces-spec) kanagawa-theme-custom-colors))
+               (kanagawa-themes--faces-spec))
         (provide-theme ',name)))))
 
 ;;;###autoload
