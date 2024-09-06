@@ -1,4 +1,4 @@
-;;; kanagawa-dragon-theme.el --- kanagawa dragon theme -*- lexical-binding: t -*-
+;;; kanagawa-lib.el --- kanagawa library -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Mikael Konradsson
 ;; Copyright (C) 2023-2024 Meritamen <meritamen@sdf.org>
@@ -23,13 +23,19 @@
 
 ;;; Code:
 
-(require 'kanagawa-colors)
+(defmacro kanagawa-theme--define-variant-colors (variant &rest body)
+  `(defvar ,(intern (format "kanagawa-theme-%s-colors" (symbol-name variant)))
+     (let ,kanagawa-color-palette-alist ,@body)))
 
-(kanagawa-theme--define-theme dragon)
+(defmacro kanagawa-theme--variant-with-colors (variant &rest body)
+  (let ((colors (intern (format "kanagawa-theme-%s-colors" (symbol-name variant)))))
+    `(let ,(symbol-value colors) ,@body)))
 
-;; Local Variables
+(provide 'kanagawa-lib)
+
+;; Local Variables:
 ;; no-byte-compile: t
 ;; indent-tabs-mode: nil
 ;; End:
 
-;;; kanagawa-dragon-theme.el ends here
+;;; kanagawa-lib.el ends here

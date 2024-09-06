@@ -17,13 +17,13 @@
 ;; GNU General Public License for more details.
 
 ;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
 ;;; Code:
 
-(require 'kanagawa-theme)
+(require 'kanagawa-lib)
 (require 'kanagawa-palette)
 
 (kanagawa-theme--define-variant-colors
@@ -110,7 +110,7 @@
    (bright-yellow ,carp-yellow)
    (bright-blue ,spring-blue)
    (bright-magenta ,spring-violet-1)
-   (brignt-cyan ,wave-aqua-2)
+   (bright-cyan ,wave-aqua-2)
    (bright-white ,fuji-white)
    (extend-color-1 ,surimi-orange)
    (extend-color-2 ,peach-red)))
@@ -199,7 +199,7 @@
    (bright-yellow ,carp-yellow)
    (bright-blue ,spring-blue)
    (bright-magenta ,spring-violet-1)
-   (brignt-cyan ,wave-aqua-2)
+   (bright-cyan ,wave-aqua-2)
    (bright-white ,dragon-white)
    (extend-color-1 ,dragon-orange)
    (extend-color-2 ,dragon-orange-2)))
@@ -288,7 +288,7 @@
    (bright-yellow ,lotus-yellow-2)
    (bright-blue ,lotus-teal-2)
    (bright-magenta ,lotus-violet-4)
-   (brignt-cyan ,lotus-aqua-2)
+   (bright-cyan ,lotus-aqua-2)
    (bright-white ,lotus-ink-2)
    (extend-color-1 ,lotus-orange2)
    (extend-color-2 ,lotus-red-3)))
