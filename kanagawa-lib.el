@@ -24,13 +24,16 @@
 ;;; Code:
 
 (defun kanagawa-themes--variant-colors-symbol (variant)
+  "Create symbol for color palette of kanagawa-themes VARIANT."
   (intern (format "kanagawa-themes-%s-colors" (symbol-name variant))))
 
 (defmacro kanagawa-themes--define-variant-colors (variant &rest body)
+  "Define a color palette for a specific theme variant."
   `(defvar ,(kanagawa-themes--variant-colors-symbol variant)
      (let ,kanagawa-themes-color-palette-list ,@body)))
 
 (defmacro kanagawa-themes--variant-with-colors (variant &rest body)
+  "Execute BODY with the color palette of a specified theme VARIANT."
   `(let ,(append (symbol-value (kanagawa-themes--variant-colors-symbol variant))
                  kanagawa-themes-custom-colors)
      ,@body))

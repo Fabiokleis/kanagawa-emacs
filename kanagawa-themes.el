@@ -36,7 +36,7 @@
 (require 'kanagawa-colors)
 
 (defgroup kanagawa-themes nil
-  "Kanagawa-theme options."
+  "Kanagawa-themes options."
   :group 'faces)
 
 (defcustom kanagawa-themes-comment-italic t
@@ -74,6 +74,7 @@
   "Place to override default theme colors.")
 
 (defmacro kanagawa-themes--faces-spec ()
+  "Provide the faces specification."
   `(mapcar
     #'(lambda (f) (list (car f) `((t ,@(cdr f)))))
     `(
@@ -95,6 +96,14 @@
       (warning (:foreground ,diag-warning :weight bold))
       (tooltip (:foreground ,pmenu-fg :background ,pmenu-bg))
       (menu (:foreground ,fg :background ,bg))
+      (region (:background ,bg-visual))
+      (separator-line (:background ,bg-m3))
+      (shadow (:inherit separator-line))
+      (window-border (:background ,bg))
+      (window-divider (:foreground ,bg-m1))
+      (vertical-border (:foreground ,bg-m1))
+;;;;;;; dired
+      (dired-mark (:foreground ,syn-perproc))
 ;;;;;;; font lock
       (font-lock-builtin-face (:foreground ,fg))
       (font-lock-comment-face (:foreground ,syn-comment
@@ -447,6 +456,7 @@
       (orderless-match-face-3 (:foreground ,cyan)))))
 
 (defmacro kanagawa-themes--define-theme (variant)
+  "Define a theme for the kanagawa-themes VARIANT."
   (let ((name (intern (format "kanagawa-%s" (symbol-name variant))))
         (doc (format "The Kanagawa %s theme" variant)))
     `(progn

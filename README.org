@@ -1,6 +1,6 @@
-* kanagawa-theme for Emacs
+* kanagawa-themes for Emacs
 [[https://www.gnu.org/software/emacs/][file:https://github.com/minad/corfu/blob/screenshots/emacs.svg?raw=true]]
-[[https://melpa.org/#/kanagawa-theme][file:https://melpa.org/packages/kanagawa-theme-badge.svg]]
+[[https://melpa.org/#/kanagawa-theme][file:https://melpa.org/packages/kanagawa-themes-badge.svg]]
 
 Kanagawa for Emacs is a port of the elegant [[https://github.com/rebelot/kanagawa.nvim][kanagawa.nvim]], developed by [[https://github.com/rebelot][Tommaso Laurenzi]].
 
@@ -12,7 +12,7 @@ Kanagawa for Emacs supports officially Emacs 24+.
 
 *** Manual
 
-Download [[https://github.com/meritamen/emacs-kanagawa-theme][emacs-kanagawa-theme]] to the directory =~/.emacs.d/site-lisp/=. Add this to your
+Download [[https://github.com/Fabiokleis/kanagawa-emacs][kanagawa-emacs]] to the directory =~/.emacs.d/site-lisp/=. Add this to your
 =.emacs= (or =init.el=):
 
 #+BEGIN_SRC emacs-lisp
@@ -28,9 +28,9 @@ Now you can load the theme with the interactive function =load-theme= like this:
 
 Kanagawa is available in [[https://melpa.org][MELPA]].
 
-You can install =kanagawa= with the following command:
+You can install =kanagawa-themes= with the following command:
 
-=M-x package-install kanagawa-theme=
+=M-x package-install kanagawa-themes=
 
 To load it automatically on Emacs startup add this to your init file:
 
