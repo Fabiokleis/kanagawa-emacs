@@ -1,0 +1,83 @@
+* kanagawa-themes for Emacs
+[[https://www.gnu.org/software/emacs/][file:https://github.com/minad/corfu/blob/screenshots/emacs.svg?raw=true]]
+[[https://melpa.org/#/kanagawa-theme][file:https://melpa.org/packages/kanagawa-themes-badge.svg]]
+
+Kanagawa for Emacs is a port of the elegant [[https://github.com/rebelot/kanagawa.nvim][kanagawa.nvim]], developed by [[https://github.com/rebelot][Tommaso Laurenzi]].
+
+Kanagawa now has three variants: =wave= (default), =dragon=, and =lotus=.
+
+Kanagawa for Emacs supports officially Emacs 24+.
+
+** Installation
+
+*** Manual
+
+Download [[https://github.com/Fabiokleis/kanagawa-emacs][kanagawa-emacs]] to the directory =~/.emacs.d/site-lisp/=. Add this to your
+=.emacs= (or =init.el=):
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path (concat user-emacs-directory "site-lisp"))
+(require 'kanagawa-themes)
+#+END_SRC
+
+Now you can load the theme with the interactive function =load-theme= like this:
+
+=M-x load-theme RET kanagawa-wave= (or =kanagawa-dragon=, =kanagawa-lotus=)
+
+*** Package.el
+
+Kanagawa is available in [[https://melpa.org][MELPA]].
+
+You can install =kanagawa-themes= with the following command:
+
+=M-x package-install kanagawa-themes=
+
+To load it automatically on Emacs startup add this to your init file:
+
+#+BEGIN_SRC emacs-lisp
+(load-theme 'kanagawa-wave t)
+#+END_SRC
+
+Or use =use-package= macro:
+
+#+BEGIN_SRC emacs-lisp
+(use-package kanagawa-themes
+  :ensure t
+  :config
+  (load-theme 'kanagawa-wave t))
+#+END_SRC
+
+** Customization
+
+*** Custom colors
+If you'd like to tweak the theme by changing just a few colors, you can
+do so by defining new values in the =kanagawas-theme-custom-colors=
+variable before loading the theme.
+
+For example, to customize just the lighter background colors, you could add
+to your init file:
+
+#+BEGIN_SRC emacs-lisp
+(setq kanagawa-themes-custom-colors '((bg "#0A0E14")))
+(load-theme 'kanagawa-wave t)
+#+END_SRC
+
+*** Options
+- =kanagawa-themes-comment-italic=:
+This toggles italics for comments and will also add a lighter color to it.
+- =kanagawa-themes-keyword-italic=:
+This toggles italics for keywords.
+- =kanagawa-themes-org-agenda-height=:
+This toggles the use of varying org agenda heights.
+- =kanagawa-themes-org-bold=:
+This toggles bold text for org headings.
+- =kanagawa-themes-org-height=:
+This toggles the use of varying org headings heights.
+- =kanagawa-themes-org-highlight=:
+This toggles highlighting of org headings.
+- =kanagawa-themes-org-priority-bold=:
+This toggles bold text for priority items in agenda view.
+** FAQ
+
+*** Wrong colors in the terminal Emacs version
+Enable true color, otherwise Kanagawa won't support.
