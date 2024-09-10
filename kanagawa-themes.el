@@ -5,7 +5,7 @@
 
 ;; Author: Meritamen <meritamen@sdf.org>
 ;; Maintainer: Fabio Kleis <fabiohkrc@gmail.com>
-;; URL: https://github.com/Fabiokleis/emacs-kanagawa-theme
+;; URL: https://github.com/Fabiokleis/kanagawa-emacs
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24.3"))
 ;; Created: 16 September 2023
@@ -31,9 +31,6 @@
 ;; Original theme created by rebelot see: https://github.com/rebelot/kanagawa.nvim
 
 ;;; Code:
-
-(require 'kanagawa-palette)
-(require 'kanagawa-colors)
 
 (defgroup kanagawa-themes nil
   "Kanagawa-themes options."
@@ -71,10 +68,411 @@
 
 ;;;###autoload
 (defcustom kanagawa-themes-custom-colors '()
-  "Place to override default theme colors.")
+  "Place to override default theme colors."
+  :type 'list
+  :group 'kanagawa-themes)
 
-(defmacro kanagawa-themes--faces-spec ()
-  "Provide the faces specification."
+(defvar kanagawa-themes-color-palette-list
+  '((sumi-ink-0 "#16161D")
+    (sumi-ink-1 "#181820")
+    (sumi-ink-2 "#1a1a22")
+    (sumi-ink-3 "#1F1F28")
+    (sumi-ink-4 "#2A2A37")
+    (sumi-ink-5 "#363646")
+    (sumi-ink-6 "#54546D") ; fg
+
+    ;; Popup and Floats
+    (wave-blue-1 "#223249")
+    (wave-blue-2 "#2D4F67")
+
+    ;; Diff and Git
+    (winter-green "#2B3328")
+    (winter-yellow "#49443C")
+    (winter-red "#43242B")
+    (winter-blue "#252535")
+    (autumn-green "#76946A")
+    (autumn-red "#C34043")
+    (autumn-yellow "#DCA561")
+
+    ;; Diag
+    (samurai-red "#E82424")
+    (ronin-yellow "#FF9E3B")
+    (wave-aqua-1 "#6A9589")
+    (dragon-blue "#658594")
+
+    ;; Fg and Comments
+    (old-white "#C8C093")
+    (fuji-white "#DCD7BA")
+    (fuji-gray "#727169")
+
+    (oni-violet "#957FB8")
+    (oni-violet-2 "#b8b4d0")
+    (crystal-blue "#7E9CD8")
+    (spring-violet-1 "#938AA9")
+    (spring-violet-2 "#9CABCA")
+    (spring-blue "#7FB4CA")
+    (light-blue "#A3D4D5")
+    (wave-aqua-2 "#7AA89F") ;; improve lightness: desaturated greenish Aqua
+
+    (spring-green "#98BB6C")
+    (boat-yellow-1 "#938056")
+    (boat-yellow-2 "#C0A36E")
+    (carp-yellow "#E6C384")
+
+    (sakura-pink "#D27E99")
+    (wave-red "#E46876")
+    (peach-red "#FF5D62")
+    (surimi-orange "#FFA066")
+    (katana-gray "#717C7C")
+
+    (dragon-black-0 "#0d0c0c")
+    (dragon-black-1 "#12120f")
+    (dragon-black-2 "#1D1C19")
+    (dragon-black-3 "#181616")
+    (dragon-black-4 "#282727")
+    (dragon-black-5 "#393836")
+    (dragon-black-6 "#625e5a")
+
+    (dragon-white "#c5c9c5")
+    (dragon-green "#87a987")
+    (dragon-green-2 "#8a9a7b")
+    (dragon-pink "#a292a3")
+    (dragon-orange "#b6927b")
+    (dragon-orange-2 "#b98d7b")
+    (dragon-gray "#a6a69c")
+    (dragon-gray1 "#9e9b93")
+    (dragon-gray-3 "#7a8382")
+    (dragon-blue-2 "#8ba4b0")
+    (dragon-violet "#8992a7")
+    (dragon-red "#c4746e")
+    (dragon-aqua "#8ea4a2")
+    (dragon-ash "#737c73")
+    (dragon-teal "#949fb5")
+    (dragon-yellow "#c4b28a")
+
+    (lotus-ink-1 "#545464")
+    (lotus-ink-2 "#43436c")
+    (lotus-gray "#dcd7ba")
+    (lotus-gray-2 "#716e61")
+    (lotus-gray-3 "#8a8980")
+    (lotus-white-0 "#d5cea3")
+    (lotus-white-1 "#dcd5ac")
+    (lotus-white-2 "#e5ddb0")
+    (lotus-white-3 "#f2ecbc")
+    (lotus-white-4 "#e7dba0")
+    (lotus-white-5 "#e4d794")
+    (lotus-violet-1 "#a09cac")
+    (lotus-violet-2 "#766b90")
+    (lotus-violet-3 "#c9cbd1")
+    (lotus-violet-4 "#624c83")
+    (lotus-blue-1 "#c7d7e0")
+    (lotus-blue-2 "#b5cbd2")
+    (lotus-blue-3 "#9fb5c9")
+    (lotus-blue-4 "#4d699b")
+    (lotus-blue-5 "#5d57a3")
+    (lotus-green "#6f894e")
+    (lotus-green-2 "#6e915f")
+    (lotus-green-3 "#b7d0ae")
+    (lotus-pink "#b35b79")
+    (lotus-orange "#cc6d00")
+    (lotus-orange2 "#e98a00")
+    (lotus-yellow "#77713f")
+    (lotus-yellow-2 "#836f4a")
+    (lotus-yellow-3 "#de9800")
+    (lotus-yellow-4 "#f9d791")
+    (lotus-red "#c84053")
+    (lotus-red-2 "#d7474b")
+    (lotus-red-3 "#e82424")
+    (lotus-red-4 "#d9a594")
+    (lotus-aqua "#597b75")
+    (lotus-aqua-2 "#5e857a")
+    (lotus-teal-1 "#4e8ca2")
+    (lotus-teal-2 "#6693bf")
+    (lotus-teal-3 "#5a7785")
+    (lotus-cyan "#d7e3d8"))
+  "The kanagawa color palette list.")
+
+(defun kanagawa-themes--variant-colors-symbol (variant)
+  "Create symbol for color palette of kanagawa-themes VARIANT."
+  (intern (format "kanagawa-themes-%s-colors" (symbol-name variant))))
+
+(defmacro kanagawa-themes--define-variant-colors (variant &rest body)
+  "Define color palette for a specific theme VARIANT via BODY."
+  `(defvar ,(kanagawa-themes--variant-colors-symbol variant)
+     (let ,kanagawa-themes-color-palette-list ,@body)))
+
+(kanagawa-themes--define-variant-colors
+ wave
+ `((fg ,fuji-white)
+   (fg-dim ,old-white)
+   (fg-reverse ,wave-blue-1)
+
+   (bg-dim ,sumi-ink-1)
+   (bg-gutter ,sumi-ink-4)
+
+   (bg-m3 ,sumi-ink-0)
+   (bg-m2 ,sumi-ink-1)
+   (bg-m1 ,sumi-ink-2)
+   (bg ,sumi-ink-3)
+   (bg-p1 ,sumi-ink-4)
+   (bg-p2 ,sumi-ink-5)
+
+   (special ,spring-violet-1)
+   (nontext ,sumi-ink-6)
+   (whitespace ,sumi-ink-6)
+
+   (bg-visual ,wave-blue-1)
+   (bg-search ,wave-blue-2)
+
+   (pmenu-fg ,fuji-white)
+   (pmenu-fg-sel nil)
+   (pmenu-bg ,wave-blue-1)
+   (pmenu-bg-sel ,wave-blue-2)
+   (pmenu-bg-sbar ,wave-blue-1)
+   (pmenu-bg-thumb ,wave-blue-2)
+
+   (float-fg ,old-white)
+   (float-bg ,sumi-ink-0)
+   (float-fg-border ,sumi-ink-6)
+   (float-bg-border ,sumi-ink-0)
+
+   (syn-string ,spring-green)
+   (syn-variable nil)
+   (syn-number ,sakura-pink)
+   (syn-constant ,surimi-orange)
+   (syn-identifier ,carp-yellow)
+   (syn-parameter ,oni-violet-2)
+   (syn-fun ,crystal-blue)
+   (syn-statement ,oni-violet)
+   (syn-keyword ,oni-violet)
+   (syn-operator ,boat-yellow-2)
+   (syn-perproc ,wave-red)
+   (syn-type ,wave-aqua-2)
+   (syn-regex ,boat-yellow-2)
+   (syn-deprecated ,katana-gray)
+   (syn-comment ,fuji-gray)
+   (syn-punct ,spring-violet-2)
+   (syn-special-1 ,spring-blue)
+   (syn-special-2 ,wave-red)
+   (syn-special-3 ,peach-red)
+
+   (vcs-added ,autumn-green)
+   (vcs-removed ,autumn-red)
+   (vcs-changed ,autumn-yellow)
+
+   (diff-add ,winter-green)
+   (diff-delete ,winter-red)
+   (diff-change ,winter-blue)
+   (diff-text ,winter-yellow)
+
+   (diag-ok ,spring-green)
+   (diag-error ,samurai-red)
+   (diag-warning ,ronin-yellow)
+   (diag-info ,dragon-blue)
+   (diag-hint ,wave-aqua-1)
+
+   (black ,sumi-ink-0)
+   (red ,autumn-red)
+   (green ,autumn-green)
+   (yellow ,boat-yellow-2)
+   (blue ,crystal-blue)
+   (magenta ,oni-violet)
+   (cyan ,wave-aqua-1)
+   (white ,old-white)
+   (bright-black ,fuji-gray)
+   (bright-red ,samurai-red)
+   (bright-green ,spring-green)
+   (bright-yellow ,carp-yellow)
+   (bright-blue ,spring-blue)
+   (bright-magenta ,spring-violet-1)
+   (bright-cyan ,wave-aqua-2)
+   (bright-white ,fuji-white)
+   (extend-color-1 ,surimi-orange)
+   (extend-color-2 ,peach-red)))
+
+(kanagawa-themes--define-variant-colors
+ dragon
+ `((fg ,dragon-white)
+   (fg-dim ,old-white)
+   (fg-reverse ,wave-blue-1)
+
+   (bg-dim ,dragon-black-1)
+   (bg-gutter ,dragon-black-4)
+
+   (bg-m3 ,dragon-black-0)
+   (bg-m2 ,dragon-black-1)
+   (bg-m1 ,dragon-black-2)
+   (bg ,dragon-black-3)
+   (bg-p1 ,dragon-black-4)
+   (bg-p2 ,dragon-black-5)
+
+   (special ,dragon-gray-3)
+   (nontext ,dragon-black-6)
+   (whitespace ,dragon-black-6)
+
+   (bg-visual ,wave-blue-1)
+   (bg-search ,wave-blue-2)
+
+   (pmenu-fg ,fuji-white)
+   (pmenu-fg-sel nil)
+   (pmenu-bg ,wave-blue-1)
+   (pmenu-bg-sel ,wave-blue-2)
+   (pmenu-bg-sbar ,wave-blue-1)
+   (pmenu-bg-thumb ,wave-blue-2)
+
+   (float-fg ,old-white)
+   (float-bg ,dragon-black-0)
+   (float-fg-border ,sumi-ink-6)
+   (float-bg-border ,dragon-black-0)
+
+   (syn-string ,dragon-green-2)
+   (syn-variable nil)
+   (syn-number ,dragon-pink)
+   (syn-constant ,dragon-orange)
+   (syn-identifier ,carp-yellow)
+   (syn-parameter ,dragon-gray)
+   (syn-fun ,dragon-blue-2)
+   (syn-statement ,dragon-violet)
+   (syn-keyword ,dragon-violet)
+   (syn-operator ,dragon-red)
+   (syn-perproc ,dragon-red)
+   (syn-type ,dragon-aqua)
+   (syn-regex ,dragon-red)
+   (syn-deprecated ,katana-gray)
+   (syn-comment ,dragon-ash)
+   (syn-punct ,dragon-green-2)
+   (syn-special-1 ,dragon-teal)
+   (syn-special-2 ,dragon-red)
+   (syn-special-3 ,dragon-red)
+
+   (vcs-added ,autumn-green)
+   (vcs-removed ,autumn-red)
+   (vcs-changed ,autumn-yellow)
+
+   (diff-add ,winter-green)
+   (diff-delete ,winter-red)
+   (diff-change ,winter-blue)
+   (diff-text ,winter-yellow)
+
+   (diag-ok ,spring-green)
+   (diag-error ,samurai-red)
+   (diag-warning ,ronin-yellow)
+   (diag-info ,dragon-blue)
+   (diag-hint ,wave-aqua-1)
+
+   (black ,dragon-black-0)
+   (red ,dragon-red)
+   (green ,dragon-green-2)
+   (yellow ,dragon-yellow)
+   (blue ,dragon-blue-2)
+   (magenta ,dragon-pink)
+   (cyan ,dragon-aqua)
+   (white ,old-white)
+   (bright-black ,dragon-gray)
+   (bright-red ,wave-red)
+   (bright-green ,dragon-green)
+   (bright-yellow ,carp-yellow)
+   (bright-blue ,spring-blue)
+   (bright-magenta ,spring-violet-1)
+   (bright-cyan ,wave-aqua-2)
+   (bright-white ,dragon-white)
+   (extend-color-1 ,dragon-orange)
+   (extend-color-2 ,dragon-orange-2)))
+
+(kanagawa-themes--define-variant-colors
+ lotus
+ `((fg ,lotus-ink-1)
+   (fg-dim ,lotus-ink-2)
+   (fg-reverse ,lotus-gray)
+
+   (bg-dim ,lotus-white-1)
+   (bg-gutter ,lotus-white-4)
+
+   (bg-m3 ,lotus-white-0)
+   (bg-m2 ,lotus-white-1)
+   (bg-m1 ,lotus-white-2)
+   (bg ,lotus-white-3)
+   (bg-p1 ,lotus-white-4)
+   (bg-p2 ,lotus-white-5)
+
+   (special ,lotus-violet-2)
+   (nontext ,lotus-violet-1)
+   (whitespace ,lotus-violet-1)
+
+   (bg-visual ,lotus-violet-3)
+   (bg-search ,lotus-blue-2)
+
+   (pmenu-fg ,lotus-ink-2)
+   (pmenu-fg-sel nil)
+   (pmenu-bg ,lotus-blue-1)
+   (pmenu-bg-sel ,lotus-blue-3)
+   (pmenu-bg-sbar ,lotus-blue-1)
+   (pmenu-bg-thumb ,lotus-blue-2)
+
+   (float-fg ,lotus-ink-2)
+   (float-bg ,lotus-white-0)
+   (float-fg-border ,lotus-gray-2)
+   (float-bg-border ,lotus-white-0)
+
+   (syn-string ,lotus-green)
+   (syn-variable nil)
+   (syn-number ,lotus-pink)
+   (syn-constant ,lotus-orange)
+   (syn-identifier ,lotus-yellow)
+   (syn-parameter ,lotus-blue-5)
+   (syn-fun ,lotus-blue-4)
+   (syn-statement ,lotus-violet-4)
+   (syn-keyword ,lotus-violet-4)
+   (syn-operator ,lotus-yellow-2)
+   (syn-perproc ,lotus-red)
+   (syn-type ,lotus-aqua)
+   (syn-regex ,lotus-yellow-2)
+   (syn-deprecated ,lotus-gray-3)
+   (syn-comment ,lotus-gray-3)
+   (syn-punct ,lotus-teal-1)
+   (syn-special-1 ,lotus-teal-2)
+   (syn-special-2 ,lotus-red)
+   (syn-special-3 ,peach-red)
+
+   (vcs-added ,lotus-green-2)
+   (vcs-removed ,lotus-red-2)
+   (vcs-changed ,lotus-yellow-3)
+
+   (diff-add ,lotus-green-3)
+   (diff-delete ,lotus-red-4)
+   (diff-change ,lotus-cyan)
+   (diff-text ,lotus-yellow-4)
+
+   (diag-ok ,lotus-green)
+   (diag-error ,lotus-red-3)
+   (diag-warning ,lotus-orange2)
+   (diag-info ,lotus-teal-3)
+   (diag-hint ,lotus-aqua-2)
+
+   (black ,sumi-ink-3)
+   (red ,lotus-red)
+   (green ,lotus-green)
+   (yellow ,lotus-yellow)
+   (blue ,lotus-blue-4)
+   (magenta ,lotus-pink)
+   (cyan ,lotus-aqua)
+   (white ,lotus-ink-1)
+   (bright-black ,lotus-gray-3)
+   (bright-red ,lotus-red-2)
+   (bright-green ,lotus-green-2)
+   (bright-yellow ,lotus-yellow-2)
+   (bright-blue ,lotus-teal-2)
+   (bright-magenta ,lotus-violet-4)
+   (bright-cyan ,lotus-aqua-2)
+   (bright-white ,lotus-ink-2)
+   (extend-color-1 ,lotus-orange2)
+   (extend-color-2 ,lotus-red-3)))
+
+(defmacro kanagawa-themes--face-specs ()
+  "Return a backquote which defines a list of face specs.
+
+It expects to be evaluated in a scope in which the various color
+names to which it refers are bound."
   `(mapcar
     #'(lambda (f) (list (car f) `((t ,@(cdr f)))))
     `(
@@ -455,17 +853,22 @@
       (orderless-match-face-2 (:foreground ,blue))
       (orderless-match-face-3 (:foreground ,cyan)))))
 
+(defmacro kanagawa-themes--with-variant-colors (variant &rest body)
+  "Execute BODY with the color palette of a specified theme VARIANT."
+  `(let ,(append (symbol-value (kanagawa-themes--variant-colors-symbol variant))
+                 kanagawa-themes-custom-colors)
+     ,@body))
+
 (defmacro kanagawa-themes--define-theme (variant)
-  "Define a theme for the kanagawa-themes VARIANT."
+  "Define theme for the kanagawa-themes VARIANT."
   (let ((name (intern (format "kanagawa-%s" (symbol-name variant))))
         (doc (format "The Kanagawa %s theme" variant)))
     `(progn
        (deftheme ,name ,doc)
-       (kanagawa-themes--variant-with-colors
+       (kanagawa-themes--with-variant-colors
         ,variant
-        (apply 'custom-theme-set-faces
-               ',name
-               (kanagawa-themes--faces-spec))
+        (apply 'custom-theme-set-faces ',name
+               (kanagawa-themes--face-specs))
         (provide-theme ',name)))))
 
 ;;;###autoload
