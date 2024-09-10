@@ -51,7 +51,7 @@ Or use =use-package= macro:
 
 *** Custom colors
 If you'd like to tweak the theme by changing just a few colors, you can
-do so by defining new values in the =kanagawas-theme-custom-colors=
+do so by defining new values in the =kanagawa-themes-custom-colors=
 variable before loading the theme.
 
 For example, to customize just the lighter background colors, you could add
