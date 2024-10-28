@@ -649,7 +649,49 @@ names to which it refers are bound."
 ;;;;;;; ivy-posframe
       (ivy-posframe (:background ,bg-m1))
       (ivy-posframe-border (:background ,bg))
-;;;;;; treemacs
+;;;;;;; helm
+      (helm-bookmark-directory (:inherit helm-ff-directory))
+      (helm-bookmark-file (:foreground ,magenta))
+      (helm-bookmark-gnus (:foreground ,magenta))
+      (helm-bookmark-info (:foreground ,magenta))
+      (helm-bookmark-man (:foreground ,magenta))
+      (helm-bookmark-w3m (:foreground ,magenta))
+      (helm-buffer-directory (:foreground ,fg :background ,bg))
+      (helm-buffer-file (:foreground ,fg :background ,bg))
+      (helm-buffer-not-saved (:foreground ,magenta :background ,bg))
+      (helm-buffer-process (:foreground ,syn-keyword :background ,bg))
+      (helm-buffer-saved-out (:foreground ,fg :background ,bg))
+      (helm-buffer-size (:foreground ,fg :background ,bg))
+      (helm-candidate-number (:background ,bg :foreground ,syn-keyword :inherit bold))
+      (helm-ff-directory (:foreground ,syn-keyword :background ,bg :inherit bold))
+      (helm-ff-dotted-directory (:foreground ,syn-keyword :background ,bg :inherit bold))
+      (helm-ff-dotted-symlink-directory (:foreground ,cyan :background ,bg :inherit bold))
+      (helm-ff-executable (:foreground ,diag-ok :background ,bg :weight normal))
+      (helm-ff-file (:foreground ,fg :background ,bg :weight normal))
+      (helm-ff-invalid-symlink (:foreground ,red :background ,bg :inherit bold))
+      (helm-ff-prefix (:foreground ,bg :background ,syn-keyword :weight normal))
+      (helm-ff-symlink (:foreground ,cyan :background ,bg :inherit bold))
+      (helm-grep-cmd-line (:foreground ,fg :background ,bg))
+      (helm-grep-file (:foreground ,fg :background ,bg))
+      (helm-grep-finish (:foreground ,fg :background ,bg))
+      (helm-grep-lineno (:foreground ,syn-type :background ,bg :inherit bold))
+      (helm-grep-match (:foreground unspecified :background unspecified :inherit helm-match))
+      (helm-header (:foreground ,fg :background ,bg :underline nil :box nil))
+      (helm-match (:foreground ,green))
+      (helm-match-item (:foreground ,green))
+      (helm-moccur-buffer (:foreground ,syn-variable :background ,bg))
+      (helm-selection (:background ,bg-visual))
+      (helm-selection-line (:background ,bg-m1))
+      (helm-separator (:foreground ,magenta :background ,bg))
+      (helm-source-header (:background ,magenta :foreground ,bg :inherit bold))
+      (helm-time-zone-current (:foreground ,syn-keyword :background ,bg))
+      (helm-time-zone-home (:foreground ,magenta :background ,bg))
+      (helm-visible-mark (:foreground ,syn-keyword :background ,bg-m3))
+;;;;;;; helm-swoop
+      (helm-swoop-target-line-block-face (:foreground ,fg :background ,bg-dim))
+      (helm-swoop-target-line-face (:background ,bg-dim))
+      (helm-swoop-target-word-face (:background ,bg-dim :foreground ,diag-warning))
+;;;;;;; treemacs
       (treemacs-directory-collapsed-face (:foreground ,fg))
       (treemacs-directory-face (:inherit treemacs-directory-collapsed-face))
       (treemacs-file-face (:inherit treemacs-directory-face))
@@ -785,15 +827,15 @@ names to which it refers are bound."
 ;;;;;;; ace
       (ace-jump-face-background (:foreground ,bright-blue))
       (ace-jump-face-foreground (:foreground ,extend-color-2 :background ,bg-m3 :weight bold))
-;;;;;;; vertigo
+;;;;;;; vertico
       (vertico-multiline (:background ,diag-error))
       (vertico-group-title ( :foreground ,blue :background ,diff-change :weight bold))
       (vertico-group-separator (:inherit vertico-group-title :strike-through t))
       (vertico-current (:foreground ,bright-yellow :background ,fg-reverse :weight bold :slant italic))
-;;;;;;; vertico-posfram
+;;;;;;; vertico-posframe
       (vertico-posframe-border (:background ,bg))
       (vertico-posframe (:background ,bg-m1))
-;;;;;;; vertico
+;;;;;;; marginalia
       (marginalia-file-priv-no (:background unspecified))
 ;;;;;;; hydra
       (hydra-face-amaranth (:foreground ,vcs-removed))
