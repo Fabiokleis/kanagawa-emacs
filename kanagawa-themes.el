@@ -1,10 +1,10 @@
 ;;; kanagawa-themes.el --- Elegant theme inspired by The Great Wave off Kanagawa -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Mikael Konradsson
-;; Copyright (C) 2023-2024 Meritamen <meritamen@sdf.org>
+;; Copyright (C) 2023-2024 Sion Eltnam Sokaris <meritamen@sdf.org>
 
-;; Author: Meritamen <meritamen@sdf.org>
-;; Maintainer: Fabio Kleis <fabiohkrc@gmail.com>
+;; Author: Sion Eltnam Sokaris <meritamen@sdf.org>
+;; Maintainer: Fabio Kleis <fabiohkrc@gmail.com>, Sion Eltnam Sokaris <meritamen@sdf.org>
 ;; URL: https://github.com/Fabiokleis/kanagawa-emacs
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24.3"))
