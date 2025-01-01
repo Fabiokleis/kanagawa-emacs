@@ -1,7 +1,7 @@
 ;;; kanagawa-themes.el --- Elegant theme inspired by The Great Wave off Kanagawa -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Mikael Konradsson
-;; Copyright (C) 2023-2024 Sion Eltnam Sokaris <meritamen@sdf.org>
+;; Copyright (C) 2023-2025 Sion Eltnam Sokaris <meritamen@sdf.org>
 
 ;; Author: Sion Eltnam Sokaris <meritamen@sdf.org>
 ;; Maintainer: Fabio Kleis <fabiohkrc@gmail.com>, Sion Eltnam Sokaris <meritamen@sdf.org>
