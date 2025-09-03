@@ -503,8 +503,6 @@ names to which it refers are bound."
       (window-border (:background ,bg))
       (window-divider (:foreground ,bg-m1))
       (vertical-border (:foreground ,bg-m1))
-;;;;;;; dired
-      (dired-mark (:foreground ,syn-perproc))
 ;;;;;;; font lock
       (font-lock-builtin-face (:foreground ,fg))
       (font-lock-comment-face (:foreground ,syn-comment
@@ -626,6 +624,16 @@ names to which it refers are bound."
       (comint-highlight-prompt (:background ,syn-punct :foreground ,bg-dim))
 ;;;;;; completions
       (completions-annotations (:background unspecified :foreground ,diag-info :slant italic))
+;;;;;; dired
+      (dired-directory (:foreground ,syn-keyword :inherit bold))
+      (dired-flagged (:foreground ,red))
+      (dired-header (:foreground ,fg-dim :weight bold))
+      (dired-ignored (:inherit shadow))
+      (dired-mark (:foreground ,syn-perproc :inherit bold))
+      (dired-marked (:foreground ,magenta :inherit bold))
+      (dired-perm-write (:foreground ,fg :underline t))
+      (dired-symlink (:foreground ,cyan))
+      (dired-warning (:foreground ,diag-warning))
 
 ;;;;;; Third-party packages
 
