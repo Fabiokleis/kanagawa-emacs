@@ -947,7 +947,14 @@ names to which it refers are bound."
       (magit-reflog-reset (:foreground ,red))
       (magit-section-heading (:foreground ,syn-keyword :inherit bold :extend t))
       (magit-section-highlight (:background ,bg-m2 :extend t))
-      (magit-section-title (:background ,bg :foreground ,syn-keyword :inherit bold)))))
+      (magit-section-title (:background ,bg :foreground ,syn-keyword :inherit bold))
+;;;;;;; dired-subtree
+      (dired-subtree-depth-1-face (:background ,bg))
+      (dired-subtree-depth-2-face (:background ,bg))
+      (dired-subtree-depth-3-face (:background ,bg))
+      (dired-subtree-depth-4-face (:background ,bg))
+      (dired-subtree-depth-5-face (:background ,bg))
+      (dired-subtree-depth-6-face (:background ,bg)))))
 
 (defmacro kanagawa-themes--with-variant-colors (variant &rest body)
   "Execute BODY with the color palette of a specified theme VARIANT."
