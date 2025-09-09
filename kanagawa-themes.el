@@ -954,7 +954,13 @@ names to which it refers are bound."
       (dired-subtree-depth-3-face (:background ,bg))
       (dired-subtree-depth-4-face (:background ,bg))
       (dired-subtree-depth-5-face (:background ,bg))
-      (dired-subtree-depth-6-face (:background ,bg)))))
+      (dired-subtree-depth-6-face (:background ,bg))
+;;;;;;; corfu
+      (corfu-default (:background ,bg-m1))
+      (corfu-current (:background ,bg-p2 :foreground nil))
+      (corfu-deprecated (:inherit nil))
+      (corfu-bar (:background nil :inherit tooltip))
+      (corfu-border (:background ,bg)))))
 
 (defmacro kanagawa-themes--with-variant-colors (variant &rest body)
   "Execute BODY with the color palette of a specified theme VARIANT."
