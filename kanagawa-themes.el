@@ -966,6 +966,12 @@ names to which it refers are bound."
       (corfu-deprecated (:inherit nil))
       (corfu-bar (:background nil :inherit tooltip))
       (corfu-border (:background ,bg))
+;;;;;;; wgrep
+      (wgrep-face (:foreground ,green))
+      (wgrep-delete-face (:foreground ,red))
+      (wgrep-reject-face (:foreground ,red))
+      (wgrep-file-face (:foreground ,green))
+      (wgrep-done-face (:foreground ,blue))
 ;;;;;;; diredfl
       (diredfl-autofile-name (:foreground ,bg-search))
       (diredfl-compressed-file-name (:foreground ,diff-text))
