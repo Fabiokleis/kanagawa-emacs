@@ -905,7 +905,7 @@ names to which it refers are bound."
                                             :background ,bright-yellow :slant italic :weight bold :height 138))
 ;;;;;;; emacs-dashboard
       (dashboard-heading (:foreground ,syn-punct :weight bold))
-      (dashboard-items-face (:foreground ,fg))
+      ;;(dashboard-items-face (:foreground ,fg))
       (dashboard-banner-logo-title (:weight bold :height 200))
       (dashboard-no-items-face (:foreground ,bg-p1))
 ;;;;;;; popup
