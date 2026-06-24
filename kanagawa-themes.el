@@ -504,7 +504,7 @@ names to which it refers are bound."
       (window-divider (:foreground ,bg-m1))
       (vertical-border (:foreground ,bg-m1))
 ;;;;;;; font lock
-      (font-lock-builtin-face (:foreground ,fg))
+      (font-lock-builtin-face (:foreground ,syn-special-2))
       (font-lock-comment-face (:foreground ,syn-comment
                                            :slant ,(if kanagawa-themes-comment-italic 'italic 'normal)))
       (font-lock-comment-delimiter-face (:foreground ,syn-comment))
